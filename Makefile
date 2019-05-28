@@ -51,7 +51,8 @@ docs: | doc_reqs api-docs
 	export SPHINXOPTS=-W; make -C doc html
 
 load_demo_data: ## Import example dataset
-load_demo_data: | dependencies
+#load_demo_data: | dependencies
+load_demo_data: 
 	@PYTHONPATH=. python tools/load_demo_data.py
 
 # https://www.gnu.org/software/make/manual/html_node/Overriding-Makefiles.html

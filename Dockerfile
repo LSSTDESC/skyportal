@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+FROM python:3.6
 
 RUN apt-get update && \
     apt-get install -y curl build-essential software-properties-common && \
@@ -11,6 +12,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     useradd --create-home --shell /bin/bash skyportal
+
+#COPY requirements.txt /tmp
+#RUN pip install -r /tmp/requirements.txt
+#COPY baselayer/requirements.txt /tmp
+#RUN pip install -r /tmp/requirements.txt
 
 RUN python3.6 -m venv /skyportal_env && \
     \
@@ -35,9 +41,7 @@ RUN bash -c "\
     rm -rf node_modules && \
     \
     chown -R skyportal.skyportal /skyportal_env && \
-    chown -R skyportal.skyportal /skyportal && \
-    \
-    cp docker.yaml config.yaml"
+    chown -R skyportal.skyportal /skyportal"
 
 USER skyportal
 
