@@ -1,0 +1,2 @@
+export CFLAGS=--stdlib=libc++
+export LDLAGS=--stdlib=libc++
