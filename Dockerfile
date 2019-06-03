@@ -13,10 +13,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     useradd --create-home --shell /bin/bash skyportal
 
-#COPY requirements.txt /tmp
-#RUN pip install -r /tmp/requirements.txt
-#COPY baselayer/requirements.txt /tmp
-#RUN pip install -r /tmp/requirements.txt
+COPY requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
+COPY baselayer/requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
 
 RUN python3.6 -m venv /skyportal_env && \
     \
@@ -26,7 +26,7 @@ RUN python3.6 -m venv /skyportal_env && \
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-ADD . /skyportal
+ADD  --chown=skyportal:skyportal . /skyportal
 WORKDIR /skyportal
 
 RUN bash -c "\
