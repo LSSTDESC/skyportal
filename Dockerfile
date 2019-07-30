@@ -26,6 +26,7 @@ RUN python3.6 -m venv /skyportal_env && \
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
+
 ADD  --chown=skyportal:skyportal . /skyportal
 WORKDIR /skyportal
 

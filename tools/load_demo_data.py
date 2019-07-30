@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     with status(f"Creating dummy users"):
         g = Group(name='Stream A')
-        super_admin_user = User(username='testuser@cesium-ml.org',
+        super_admin_user = User(username='agkim@lbl.gov',
                                 role_ids=['Super admin'])
         group_admin_user = User(username='groupadmin@cesium-ml.org',
                                 role_ids=['Super admin'])
