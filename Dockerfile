@@ -44,6 +44,9 @@ RUN bash -c "\
     chown -R skyportal.skyportal /skyportal_env && \
     chown -R skyportal.skyportal /skyportal"
 
+ADD docker-entrypoint.sh /skyportal/docker-entrypoint.sh
+RUN chmod +x docker-entrypoint.sh
+
 USER skyportal
 
 EXPOSE 5000
@@ -51,3 +54,5 @@ EXPOSE 5000
 CMD bash -c "source /skyportal_env/bin/activate && \
              (make log &) && \
              make run_production"
+
+ENTRYPOINT ["/skyportal/docker-entrypoint.sh"]
