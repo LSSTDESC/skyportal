@@ -24,17 +24,18 @@ file_env() {
 }
 
 file_env 'POSTGRES_PASSWORD'
-file_env 'SKEY'
-file_env 'MODS_JUPYTERHUB_API_TOKEN'
-file_env 'CONFIGPROXY_AUTH_TOKEN'
-file_env 'JUPYTERHUB_CRYPT_KEY'
-file_env 'ANNOUNCEMENT_JUPYTERHUB_API_TOKEN'
+#file_env 'SKEY'
+#file_env 'MODS_JUPYTERHUB_API_TOKEN'
+#file_env 'CONFIGPROXY_AUTH_TOKEN'
+#file_env 'JUPYTERHUB_CRYPT_KEY'
+#file_env 'ANNOUNCEMENT_JUPYTERHUB_API_TOKEN'
 
 # file_env 'NBVIEWER_JUPYTERHUB_API_TOKEN'
 
-exec "$@"
-
-export FLAGS="--config=config.yaml --config=secret.yaml"
+export FLAGS="--config=config.yaml --config=/run/secrets/secret.yaml"
 make paths
 make fill_conf_values
 PYTHONPATH=. FLAGS="$FLAGS" supervisord -c baselayer/conf/supervisor/supervisor.conf
+
+
+exec "$@"
