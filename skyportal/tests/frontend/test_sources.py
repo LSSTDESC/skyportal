@@ -84,3 +84,11 @@ def test_download_comment_attachment(driver, user, public_source):
         assert l.split('\n')[0] == 'wavelength,flux,instrument_id'
     finally:
         os.remove(fpath)
+
+
+
+def test_view_only_user_cannot_comment(driver, view_only_user, public_source):
+    driver.get(f"/become_user/{view_only_user.id}")
+    driver.get(f"/source/{public_source.id}")
+    driver.wait_for_xpath(f'//div[text()="{public_source.id}"]')
+    driver.wait_for_xpath_to_disappear('//input[@name="comment"]')
