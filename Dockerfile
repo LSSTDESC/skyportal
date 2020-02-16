@@ -55,4 +55,4 @@ CMD bash -c "source /skyportal_env/bin/activate && \
              (make log &) && \
              make run_production"
 
-ENTRYPOINT ["/skyportal/docker-entrypoint.sh"]
+ENTRYPOINT /skyportal/docker-entrypoint.sh
